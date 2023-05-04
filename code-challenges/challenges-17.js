@@ -42,15 +42,14 @@ const recursionPattern = (int1, int2) => {
 // 
 
 const filterLinks = (str) => {
-    const regexString = '<a\\s+(?:[^>]*?\\s+)?href=([\'"])(.*?)\\1';
-    const regex = new RegExp(regexString, 'g');
-    const links = [];
-    let match;
-    while ((match = regex.exec(str)) !== null) {
-      links.push(match[2]);
-    }
-    return links;
-  };
+  const regex = /w([^"]*)(?:\.com|\.org|\.net)/g;
+  const matches = str.match(regex);
+  if (matches) {
+    return matches[0];
+  } else {
+    return [];
+  }
+}
 
 // -------------------------------------------------------------------------------------------------------
 
